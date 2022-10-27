@@ -13,6 +13,20 @@ $(document).ready(function () {
 	  a_list.splice(a_list.indexOf(amenityName), 1);
     }
 	$('.amenities h4').text(a_list);
-    //$('.amenities h4').text(Object.values(amenities));
+  });
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://0.0.0.0:5001/api/v1/status/',
+    success: function (data) {
+      console.log(data);
+      $('#api_status').addClass('available');
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    },
+    dataType: 'json'
   });
 });
